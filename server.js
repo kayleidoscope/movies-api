@@ -41,10 +41,10 @@ function handleGetMovies(req, res) {
         })
     }
 
-    if (req.query.averageVote) {
+    if (req.query.avg_vote) {
         response = response.filter(movie => {
             let movieVote = movie.avg_vote;
-            let chosenAvg = Number(req.query.averageVote);
+            let chosenAvg = Number(req.query.avg_vote);
             if (chosenAvg <= movieVote) {
                 return movie;
             }
@@ -54,7 +54,7 @@ function handleGetMovies(req, res) {
     res.json(response)
 }
 
-app.get('/movies', handleGetMovies)
+app.get('/movie', handleGetMovies)
 
 const PORT = 8000;
 
