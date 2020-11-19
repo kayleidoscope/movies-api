@@ -6,12 +6,11 @@ const cors = require('cors');
 const MOVIES = require('./movies-data.json');
 
 const app = express();
-
-const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common',
-app.use(morgan(morganSetting));
-
 app.use(helmet())
 app.use(cors())
+
+const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common';
+app.use(morgan(morganSetting));
 
 app.use(function validateBearerToken(req, res, next) {
     const apiToken = process.env.API_TOKEN;
